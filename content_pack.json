@@ -1,0 +1,158 @@
+{
+  "id" : null,
+  "name" : "Ruby On Rails",
+  "description" : "Content pack for Ruby On Rails log messages sent as described in [this offical guide](https://marketplace.graylog.org/addons/2a5a0954-96f7-4c86-895b-a44e358a9571).",
+  "category" : "Web Frameworks",
+  "inputs" : [ {
+    "title" : "Ruby On Rails",
+    "configuration" : {
+      "override_source" : "",
+      "recv_buffer_size" : 262144,
+      "bind_address" : "0.0.0.0",
+      "port" : 12219
+    },
+    "type" : "org.graylog2.inputs.gelf.udp.GELFUDPInput",
+    "global" : false,
+    "extractors" : [ {
+      "title" : "Rails: method",
+      "type" : "REGEX",
+      "configuration" : {
+        "regex_value" : "method=(.+?)(\\s|$)"
+      },
+      "converters" : [ {
+        "type" : "LOWERCASE",
+        "configuration" : { }
+      } ],
+      "order" : 0,
+      "cursor_strategy" : "COPY",
+      "target_field" : "method",
+      "source_field" : "message",
+      "condition_type" : "NONE",
+      "condition_value" : ""
+    }, {
+      "title" : "Rails: path",
+      "type" : "REGEX",
+      "configuration" : {
+        "regex_value" : "path=(.+?)(\\s|$)"
+      },
+      "converters" : [ ],
+      "order" : 0,
+      "cursor_strategy" : "COPY",
+      "target_field" : "path",
+      "source_field" : "message",
+      "condition_type" : "NONE",
+      "condition_value" : ""
+    }, {
+      "title" : "Rails: format",
+      "type" : "REGEX",
+      "configuration" : {
+        "regex_value" : "format=(.+?)(\\s|$)"
+      },
+      "converters" : [ {
+        "type" : "LOWERCASE",
+        "configuration" : { }
+      } ],
+      "order" : 0,
+      "cursor_strategy" : "COPY",
+      "target_field" : "format",
+      "source_field" : "message",
+      "condition_type" : "NONE",
+      "condition_value" : ""
+    }, {
+      "title" : "Rails: controller",
+      "type" : "REGEX",
+      "configuration" : {
+        "regex_value" : "controller=(.+?)(\\s|$)"
+      },
+      "converters" : [ ],
+      "order" : 0,
+      "cursor_strategy" : "COPY",
+      "target_field" : "controller",
+      "source_field" : "message",
+      "condition_type" : "NONE",
+      "condition_value" : ""
+    }, {
+      "title" : "Rails: action",
+      "type" : "REGEX",
+      "configuration" : {
+        "regex_value" : "action=(.+?)(\\s|$)"
+      },
+      "converters" : [ ],
+      "order" : 0,
+      "cursor_strategy" : "COPY",
+      "target_field" : "action",
+      "source_field" : "message",
+      "condition_type" : "NONE",
+      "condition_value" : ""
+    }, {
+      "title" : "Rails: status",
+      "type" : "REGEX",
+      "configuration" : {
+        "regex_value" : "status=(.+?)(\\s|$)"
+      },
+      "converters" : [ {
+        "type" : "NUMERIC",
+        "configuration" : { }
+      } ],
+      "order" : 0,
+      "cursor_strategy" : "COPY",
+      "target_field" : "status",
+      "source_field" : "message",
+      "condition_type" : "NONE",
+      "condition_value" : ""
+    }, {
+      "title" : "Rails: duration",
+      "type" : "REGEX",
+      "configuration" : {
+        "regex_value" : "duration=(.+?)(\\s|$)"
+      },
+      "converters" : [ {
+        "type" : "NUMERIC",
+        "configuration" : { }
+      } ],
+      "order" : 0,
+      "cursor_strategy" : "COPY",
+      "target_field" : "duration",
+      "source_field" : "message",
+      "condition_type" : "NONE",
+      "condition_value" : ""
+    }, {
+      "title" : "Rails: view duration",
+      "type" : "REGEX",
+      "configuration" : {
+        "regex_value" : "view=(.+?)(\\s|$)"
+      },
+      "converters" : [ {
+        "type" : "NUMERIC",
+        "configuration" : { }
+      } ],
+      "order" : 0,
+      "cursor_strategy" : "COPY",
+      "target_field" : "view_duration",
+      "source_field" : "message",
+      "condition_type" : "NONE",
+      "condition_value" : ""
+    }, {
+      "title" : "Rails: db duration",
+      "type" : "REGEX",
+      "configuration" : {
+        "regex_value" : "db=(.+?)(\\s|$)"
+      },
+      "converters" : [ {
+        "type" : "NUMERIC",
+        "configuration" : { }
+      } ],
+      "order" : 0,
+      "cursor_strategy" : "COPY",
+      "target_field" : "db_duration",
+      "source_field" : "message",
+      "condition_type" : "NONE",
+      "condition_value" : ""
+    } ],
+    "static_fields" : { }
+  } ],
+  "streams" : [ ],
+  "outputs" : [ ],
+  "dashboards" : [ ],
+  "grok_patterns" : [ ]
+}
